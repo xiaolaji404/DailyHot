@@ -76,6 +76,13 @@ export default defineConfig(({ mode }) => {
     server: {
       port: 6699,
     },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: "modern",
+        },
+      },
+    },
     build: {
       minify: "terser",
       terserOptions: {

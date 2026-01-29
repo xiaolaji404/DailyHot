@@ -6,7 +6,7 @@ import App from "./App.vue";
 import router from "@/router";
 
 // 全局样式
-import "@/style/global.scss";
+import "@/styles/global.scss";
 
 const app = createApp(App);
 

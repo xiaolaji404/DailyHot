@@ -138,8 +138,8 @@
 <script setup>
 import { Refresh, More } from "@icon-park/vue-next";
 import { getHotLists } from "@/api";
-import { formatTime } from "@/utils/getTime";
-import { mainStore } from "@/store";
+import { formatTime } from "@/utils";
+import { mainStore } from "@/stores";
 import { useRouter } from "vue-router";
 
 const router = useRouter();

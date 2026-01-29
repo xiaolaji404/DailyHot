@@ -145,7 +145,7 @@
 
 <script setup>
 import { storeToRefs } from "pinia";
-import { mainStore } from "@/store";
+import { mainStore } from "@/stores";
 import { useOsTheme } from "naive-ui";
 import draggable from "vuedraggable";
 

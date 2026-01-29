@@ -121,9 +121,9 @@
 
 <script setup>
 import { Fire } from "@icon-park/vue-next";
-import { mainStore } from "@/store";
+import { mainStore } from "@/stores";
 import { useRouter } from "vue-router";
-import { formatTime } from "@/utils/getTime";
+import { formatTime } from "@/utils";
 import { getHotLists } from "@/api";
 
 const router = useRouter();
@@ -143,7 +143,8 @@ const listData = ref(null);
 // 获取热榜数据
 const getHotListsData = async (name, isNew = false) => {
   listData.value = null;
-  const item = store.newsArr.find((item) => item.name == name)
+  const item = store.newsArr.find((item) => item.name == name);
+  if (!item) return;
   getHotLists(item.name, isNew, item.params).then((res) => {
     console.log(res);
     if (res.code === 200) {

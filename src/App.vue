@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import { mainStore } from "@/store";
+import { mainStore } from "@/stores";
 import Provider from "@/components/Provider.vue";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";

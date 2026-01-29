@@ -95,8 +95,8 @@ import {
   SettingTwo,
   HamburgerButton,
 } from "@icon-park/vue-next";
-import { getCurrentTime } from "@/utils/getTime.js";
-import { mainStore } from "@/store";
+import { getCurrentTime } from "@/utils";
+import { mainStore } from "@/stores";
 import { NText, NIcon } from "naive-ui";
 import { useRouter } from "vue-router";
 

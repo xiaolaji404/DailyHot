@@ -168,7 +168,7 @@ export const mainStore = defineStore("mainData", {
   actions: {
     // 更改系统主题
     setSiteTheme(val) {
-      $message.info(`已切换至${val === "dark" ? "深色模式" : "浅色模式"}`, {
+      $message?.info(`已切换至${val === "dark" ? "深色模式" : "浅色模式"}`, {
         showIcon: false,
       });
       this.siteTheme = val;
@@ -176,26 +176,32 @@ export const mainStore = defineStore("mainData", {
     },
     // 检查更新
     checkNewsUpdate() {
-      const mainData = JSON.parse(localStorage.getItem("mainData"));
+      const stored = localStorage.getItem("mainData");
+      if (!stored) {
+        // 没有存储数据时，使用默认值
+        if (this.newsArr.length === 0) {
+          this.newsArr = [...this.defaultNewsArr];
+        }
+        return;
+      }
+      
       let updatedNum = 0;
-      if (!mainData) return false;
-      console.log("列表尝试更新", this.defaultNewsArr, this.newsArr);
       // 执行比较并迁移
       if (this.newsArr.length > 0) {
         for (const newItem of this.defaultNewsArr) {
           const exists = this.newsArr.some(
-            (news) => newItem.label === news.label && newItem.name === news.name
+            (news) => newItem.name === news.name
           );
           if (!exists) {
-            console.log("列表有更新：", newItem);
             updatedNum++;
-            this.newsArr.push(newItem);
+            this.newsArr.push({ ...newItem });
           }
         }
-        if (updatedNum) $message.success(`成功更新 ${updatedNum} 个榜单数据`);
+        if (updatedNum) {
+          $message?.success(`成功更新 ${updatedNum} 个榜单数据`);
+        }
       } else {
-        console.log("列表无内容，写入默认");
-        this.newsArr = this.defaultNewsArr;
+        this.newsArr = [...this.defaultNewsArr];
       }
     },
   },

@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-import { mainStore } from "@/store";
+import { mainStore } from "@/stores";
 import HotList from "@/components/HotList.vue";
 
 const store = mainStore();
